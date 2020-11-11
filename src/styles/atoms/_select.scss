@@ -1,0 +1,30 @@
+select {
+    display: inline-block;
+    padding: 0.55rem 2rem 0.55rem 0.55rem;
+    width: 100%;
+    margin: 0.33rem 0 1.125rem;
+    height: 2.5rem;
+    border: 0.0625rem solid $select-field-border-color;
+    border-radius: 0.25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(45deg, transparent 50%, $select-field-arrow-color 50%), linear-gradient(135deg, $select-field-arrow-color 50%, transparent 50%);
+    background-position: right 1.1rem top 1em, right 0.625rem top 1em;
+    background-size: 0.5rem 0.5rem, 0.5rem 0.5rem;
+    @include transition();
+
+     &:focus, &:hover {
+        border: 0.0625rem solid $select-field-focus-color;
+        background-image: linear-gradient(45deg, transparent 50%, $select-field-arrow-focus-color 50%), linear-gradient(135deg, $select-field-arrow-focus-color 50%, transparent 50%);
+    }
+
+
+    &::-ms-expand {
+        display: none;
+    }
+
+
+}

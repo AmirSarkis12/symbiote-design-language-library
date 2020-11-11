@@ -1,0 +1,49 @@
+// Accessable color palette - Designed to be WCAG 2.1 AA compliant achieving a contrast ratio of at least 4.5:1 when used with small text or a contrast ratio of 3:1 for large text or iconography.
+// e.g.: Use small white text on cyan-aa-small to achieve a contrast ratio of >= 4.5:1 or use white large text or icon with cyan-aa-large to achieve a contrast ratio of >= 3:1
+
+// Modify or replace these colors to match your branding. These values are referenced by _settings.scss, so if the below palette is modified, ensure that respective references are updated.
+
+//Red
+$red-aa-large: #EA4D4D;
+$red-aa-small: #D93636;
+
+//Orange
+$orange-aa-large: #D67124;
+$orange-aa-small: #C15701;
+
+//Green
+$green-aa-large: #3BA567;
+$green-aa-small: #32864F;
+
+// Cyan
+$cyan-aa-large: #0196D5;
+$cyan-aa-small: #267CB5;
+
+// Blue
+$blue-aa-large: #667FFF;
+$blue-aa-small: #4766FF;
+
+// Purple
+$purple-aa-large: #9b70FF;
+$purple-aa-small: #835ED9;
+
+// Violet
+$violet-aa-large: #bb6CE5;
+$violet-aa-small: #A054C9;
+
+// Gray
+$gray-aa-large: #949494;
+$gray-aa-small: #767676;
+$gray-non-aa: #E6E6E6; // Only used for non-essential items
+$gray-non-aa-medium: #F0F0F0; // Only used for non-essential items
+$gray-non-aa-light: #F2F2F2; // Only used for non-essential items
+$gray-non-aa-lightest: #F7F7F7; // Only used for non-essential items
+
+// Black
+$black: #000000;
+
+// White
+$white: #ffffff;
+
+// Transparent
+$transparent: rgba(0,0,0,0);

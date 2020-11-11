@@ -1,0 +1,51 @@
+// Content layout
+main {
+    margin: 1.5rem 0 3rem 0;
+}
+
+// Text layout
+    // Headings
+
+    // First headings on a page should not have any extra margin on top. The main content container will already be padded.
+    h1, h2 {
+        margin: 0 0 0.5rem 0;
+
+        // Body directly below a heading should not have any extra margin on top to better indicate association.
+        & + p {
+            margin: 0 0 1.2rem 0;
+        }
+    }
+
+    // Smaller heading on the page can have extra margin on top but have the same margin bottom for consistency with top level headings
+    h3, h4, h5, h6 {
+        margin: 1.5rem 0 0.5rem 0;
+
+        // Body directly below a heading should not have any extra margin on top to better indicate association.
+        & + p {
+            margin: 0 0 1.2rem 0;
+        }
+    }
+
+    // Body
+
+    // All remaining body elements should have margins on top and on the bottom to provide clear spacing between paragraphs.
+    p {
+        margin: 1.2rem 0;
+    }
+
+
+// List layout
+ol li{
+    margin: 1em 0 0 0;
+}
+
+ul li{
+    margin: 1.2em 0 0 0;
+}
+
+// Button layout
+
+// Provide a little bit of spacing left and right of a button to stop it from butting up to text or another button.
+button {
+    margin: 0 0.2rem;
+}

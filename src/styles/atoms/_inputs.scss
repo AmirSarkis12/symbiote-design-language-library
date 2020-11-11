@@ -1,0 +1,64 @@
+form {
+    input, textarea {
+        outline: none;
+        display: block;
+        height: 2.5rem;
+        width: 100%;
+        max-width: 220px;
+        border-radius: 0.25rem;
+        border: 0.0625rem solid $input-field-border-color;
+        margin: 0.33rem 0 1.125rem;
+        padding: 0.55rem;
+        box-sizing: border-box;
+        @include transition();
+
+        &:focus, &:hover {
+            border: 0.125rem solid $input-field-focus-color;
+            padding: 0.4875rem; // Compensates for the change in size when a border is applied. This is 0.55em - (0.125 / 2)
+        }
+
+        &.error {
+            border: 0.125rem solid $error-color;
+            padding: 0.4875rem; // Compensates for the change in size when a border is applied. This is 0.55em - (0.125 / 2)
+        }
+
+        &.valid {
+            border: 0.125rem solid $success-color;
+            padding: 0.4875rem; // Compensates for the change in size when a border is applied. This is 0.55em - (0.125 / 2)
+        }
+
+        &:disabled {
+            background-color: $gray-non-aa;
+            border: 0.0625rem solid $input-field-border-color;
+            padding: 0.4875rem; // Compensates for the change in size when a border is applied. This is 0.55em - (0.125 / 2)
+            &:hover {
+                cursor: not-allowed;
+            }
+        }
+
+        &.xs {
+            max-width: 80px;
+        }
+
+        &.sm {
+            max-width: 120px;
+        }
+
+        &.lg {
+            max-width: 280px;
+        }
+
+        &.xl {
+            max-width: 400px;
+        }
+
+        &.full-width {
+            max-width: 100%;
+        }
+
+    }
+
+    textarea {
+        min-height: 6rem;
+    }
+}

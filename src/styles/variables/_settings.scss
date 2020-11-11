@@ -1,0 +1,141 @@
+// Layout settings
+    // Gutter sise
+    $grid-gutter-width: 30px;
+
+    // grid breakpoints
+    $grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+    ) !default;
+
+    // Container sizes
+    $container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px
+    ) !default;
+
+// Body settings
+$body-background-color: $gray-non-aa-lightest;
+
+// Button settings
+$button-font: 'Body', sans-serif;
+$primary-background-color: $cyan-aa-small;
+$primary-foreground-color: $white;
+
+$secondary-background-color: $cyan-aa-small;
+$secondary-foreground-color: $white;
+
+$tertiary-background-color: $red-aa-small;
+$tertiary-foreground-color: $white;
+
+$disabled-background-color: $gray-aa-small;
+$disabled-foreground-color: $white;
+
+// Tyopgraphy settings
+$default-text-color: $black;
+$link-color: $cyan-aa-small;
+
+// Navigation settings
+$navigation-background-color: $cyan-aa-small;
+$navigation-foreground-color: $white;
+$navigation-dropdown-background-color: $white;
+$navigation-dropdown-foreground-color: $cyan-aa-small;
+$navigation-mobile-background: $gray-aa-small;
+$navigation-mobile-foreground: $white;
+
+// Side navaigation settings
+$side-navigation-heading-color: $cyan-aa-small;
+$side-navigation-link-color: $black;
+$side-navigation-hover-color: $cyan-aa-small;
+$side-navigation-mobile-border-color: $gray-aa-large;
+
+// Breadcumbs settings
+$breadcumbs-background-color: $gray-non-aa-medium;
+$breadcumbs-foreground-color: $black;
+
+// Input settings
+$checkbox-border-color: $cyan-aa-small;
+$checkbox-check-color: $cyan-aa-small;
+$radio-color: $cyan-aa-small;
+$toggle-inactive-color: $gray-aa-large;
+$toggle-active-color: $cyan-aa-small;
+$input-field-border-color: $gray-aa-small;
+$input-field-focus-color: $cyan-aa-small;
+
+// Select settings
+$select-field-border-color: $gray-aa-small;
+$select-field-focus-color: $cyan-aa-small;
+$select-field-arrow-color: $gray-aa-small;
+$select-field-arrow-focus-color: $cyan-aa-small;
+
+// Accordion settings
+$accordion-heading-background-color: $cyan-aa-small;
+$accordion-heading-foreground-color: $white;
+
+// Table settings
+$table-heading-background-color: $gray-aa-small;
+$table-heading-foreground-color: $white;
+$table-odd-background-color: $white;
+$table-odd-foreground-color: $black;
+$table-seperator-color: $gray-non-aa-medium;
+$table-even-background-color: $gray-non-aa-light;
+$table-even-foreground-color: $black;
+
+// List settings
+$list-point-background-color: $gray-aa-small;
+$list-point-foreground-color: $white;
+$list-association-color: $gray-non-aa;
+
+// Tooltip settings
+$tooltip-indicator-color: $gray-aa-small;
+$tooltip-background-color: $cyan-aa-small;
+$tooltip-foreground-color: $white;
+
+// Pagination settings
+$active-page-background-color: $cyan-aa-small;
+$active-page-foreground-color: $white;
+
+// Progress bar settings
+$progress-completed-background-color: $cyan-aa-small;
+$progress-completed-foreground-color: $white;
+$progress-current-step-background-color: $white;
+$progress-current-step-foreground-color: $black;
+$progress-current-step-border-color: $cyan-aa-small;
+$remaining-steps-background-color: $gray-aa-small;
+$remaining-steps-foreground-color: $white;
+
+// Notification settings
+$new-color: $cyan-aa-small;
+$info-color: $gray-aa-small;
+$warning-color: $orange-aa-small;
+$success-color: $green-aa-small;
+$error-color: $red-aa-small;
+
+// Card settings
+$card-date-background-color: $cyan-aa-small;
+$card-date-foreground-color: $white;
+
+// Carousel settings
+$carousel-inactive-dot-color: $gray-aa-small;
+$carousel-active-dot-color: $cyan-aa-small;
+
+// Date picker settings
+$selected-date-background-color: $cyan-aa-small;
+$selected-date-foreground-color: $white;
+$selected-dates-range-color: $gray-non-aa;
+$selected-dates-range-hover-background-color: $gray-aa-small;
+$selected-dates-range-hover-foreground-color: $white;
+$date-range-picker-to-background-color: $gray-non-aa;
+$date-range-picker-to-foreground-color: $black;
+$days-of-week-color: $cyan-aa-small;
+
+// Footer settings
+$footer-background-color: $cyan-aa-small;
+$footer-foreground-color: $white;

@@ -1,0 +1,75 @@
+
+.datepicker {
+    .datepicker-cell {
+
+        &.selected, &.range-start, &.range-end {
+            background-color: $selected-date-background-color;
+            color: $selected-date-foreground-color;
+        }
+
+        &.range {
+            background-color: $selected-dates-range-color;
+
+            &:not(.disabled) {
+                &:not(.focused) {
+                    &:not(.today) {
+                        &:hover {
+                            background-color: $selected-dates-range-hover-background-color;
+                            color: $selected-dates-range-hover-foreground-color;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    .dow {
+        color: $days-of-week-color;
+        font-weight: 400;
+    }
+}
+
+.date-range-picker {
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+
+    label {
+        width: 100%;
+    }
+
+    input {
+        width: 42.5%;
+
+        border-radius: 0.25rem 0 0 0.25rem;
+        text-align: center;
+
+        @include media-breakpoint-up(md) {
+            width: 45%;
+        }
+
+        &.from-date {
+            border-radius: 0.25rem 0 0 0.25rem;
+        }
+
+        &.to-date {
+            border-radius: 0 0.25rem 0.25rem 0;
+        }
+    }
+
+    span {
+        width: 15%;
+        margin: 0.33rem 0 1.125rem;
+        text-align: center;
+        border-top: 0.0625rem solid $gray-aa-small;
+        border-bottom: 0.0625rem solid $gray-aa-small;
+        padding: 0.49rem;
+        background-color: $date-range-picker-to-background-color;
+        color: $date-range-picker-to-foreground-color;
+
+        @include media-breakpoint-up(md) {
+            width: 10%;
+        }
+    }
+}

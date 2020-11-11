@@ -1,0 +1,42 @@
+.toggle {
+    display: inline-flex;
+	flex-wrap: wrap;
+    justify-content: left;
+
+	&-label {
+		cursor: pointer;
+		margin: 1.2rem 0rem;
+	}
+
+	&-group {
+		position: relative;
+		width: 3.125rem;
+        height: 1.5rem;
+		background-color: $toggle-inactive-color;
+		border-radius: 3rem;
+		margin: 0rem 0.5rem;
+        @include transition();
+	}
+
+	&-input:checked ~ &-group {
+		background-color: $toggle-active-color;
+
+		.toggle-checked {
+			right: 0.3rem;
+		}
+	}
+
+	&-checked {
+        position: absolute;
+        top: 50%;
+        right: calc(100% - 1.25rem);
+        content: "";
+        width: 1rem;
+        height: 1rem;
+        background-color: $white;
+        border-radius: 3rem;
+        transform: translateY(-50%);
+        @include transition();
+	}
+}
+

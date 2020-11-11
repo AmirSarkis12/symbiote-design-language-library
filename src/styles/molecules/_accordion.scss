@@ -1,0 +1,72 @@
+.accordion {
+    overflow: hidden;
+
+    .tab {
+        width: 100%;
+        color: white;
+        overflow: hidden;
+
+        &-label {
+            display: flex;
+            justify-content: space-between;
+            padding: 1em;
+            border-radius: 0.25rem;
+            margin: 0.25rem 0 0;
+            background-color: $accordion-heading-background-color;
+            font-family: 'Body', sans-serif;
+            cursor: pointer;
+            color: $accordion-heading-foreground-color;
+
+            &:hover, &:focus {
+                @include transition();
+                @include darken-on-hover-focus($accordion-heading-background-color);
+            }
+
+            &::after {
+                content: "\276F";
+                width: 1em;
+                height: 1em;
+                text-align: center;
+                @include transition();
+            }
+        }
+
+        &-content {
+            max-height: 0;
+            padding: 0 1em;
+            background-color: $accordion-heading-foreground-color;
+            @include transition();
+            font-family: 'Body', sans-serif;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+
+    input {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+
+        &:hover, &:focus {
+            &~label {
+                background-color: darken($accordion-heading-background-color, 10%);
+            }
+
+        }
+
+        &:checked {
+            + .tab-label {
+                background-color: darken($accordion-heading-background-color, 10%);
+                &::after {
+                    transform: rotate(90deg);
+                }
+            }
+            ~ .tab-content {
+                max-height: 100vh;
+                padding: 1em;
+            }
+        }
+    }
+}

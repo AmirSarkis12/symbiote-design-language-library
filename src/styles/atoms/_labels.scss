@@ -1,0 +1,36 @@
+span {
+    &.label {
+        padding:  0 0.25rem;
+        border-radius: 0.25rem;
+        background-color: $white;
+        text-transform: uppercase;
+        display: inline-block;
+        font-weight: 700;
+        margin: 0 0.125rem;
+
+        &.label-success {
+            border: 0.125rem solid $success-color;
+            color: $success-color;
+        }
+
+        &.label-warning {
+            border: 0.125rem solid $warning-color;
+            color: $warning-color;
+        }
+
+        &.label-error {
+            border: 0.125rem solid $error-color;
+            color: $error-color;
+        }
+
+        &.label-new {
+            border: 0.125rem solid $new-color;
+            color: $new-color;
+        }
+
+        &.label-info {
+            border: 0.125rem solid $info-color;
+            color: $info-color;
+        }
+    }
+}

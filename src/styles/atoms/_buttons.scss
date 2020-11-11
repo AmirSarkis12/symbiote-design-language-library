@@ -1,0 +1,99 @@
+button {
+    display: inline-flex;
+    justify-content: center;
+    padding: 0.75rem 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 0.25rem;
+
+    &.primary {
+        background-color: $primary-background-color;
+        color: $primary-foreground-color;
+        border: none;
+        @include transition();
+
+        &:hover, &:focus {
+            @include darken-on-hover-focus($primary-background-color);
+        }
+    }
+
+    &.secondary {
+        background-color: $secondary-background-color;
+        color: $secondary-foreground-color;
+        border: none;
+        @include transition();
+
+        &:hover, &:focus {
+            @include darken-on-hover-focus($secondary-background-color);
+        }
+    }
+
+    &.tertiary {
+        background-color: $tertiary-background-color;
+        color: $tertiary-foreground-color;
+        border: none;
+        @include transition();
+
+        &:hover, &:focus {
+            @include darken-on-hover-focus($tertiary-background-color);
+        }
+    }
+
+    &.cta {
+        border: none;
+        background-color: $transparent;
+        padding: 0.75rem 0.9rem 0.75rem 0;
+        font-weight: 700;
+
+        &::after {
+            height: 0.125rem;
+            padding: 0.125rem 0 0;
+            content: '\2192';
+            opacity: 0;
+            transform: translate(0, -50%);
+            @include transition();
+        }
+
+        &:hover, &:focus {
+            &::after {
+                transform: translate(0.3rem, -50%);
+                opacity: 1;
+            }
+        }
+    }
+
+    &.outline-light {
+        background-color: $transparent;
+        color: $white;
+        border: 0.0625rem solid $white;
+        height: 100%;
+    }
+
+    &.outline-dark {
+        background-color: $transparent;
+        color: $black;
+        border: 0.0625rem solid $black;
+        height: 100%;
+    }
+
+    &.disabled {
+        background-color: $disabled-background-color;
+        color: $disabled-foreground-color;
+        border: none;
+        cursor: not-allowed;
+    }
+
+    &.xs {
+        padding: 0.0625rem 0.3rem;
+    }
+
+    &.sm {
+        padding: 0.3rem 0.625rem;
+    }
+
+    &.lg {
+        padding: 0.9rem 1.25rem;
+    }
+}

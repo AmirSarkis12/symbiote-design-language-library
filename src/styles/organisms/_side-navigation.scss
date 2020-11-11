@@ -1,0 +1,91 @@
+.side-navigation {
+    display: flex;
+    flex-direction: column;
+    background-color: $body-background-color;
+    z-index: 17;
+
+    @include media-breakpoint-down(sm) {
+        padding: 1rem 0;
+        border-bottom: 0.0625rem solid $side-navigation-mobile-border-color;
+    }
+
+    .side-navigation-section {
+        width: 100%;
+        overflow: hidden;
+
+        .side-navigation-content {
+            @include transition();
+            font-family: 'Body', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            @include media-breakpoint-down(sm) {
+                flex-direction: row;
+            }
+
+            ul {
+                li {
+                    margin: 0.1rem 0;
+                    @include media-breakpoint-down(sm) {
+                        float: left;
+                    }
+                    p {
+                        margin: 0.5rem 0 0 0;
+                        color:  $side-navigation-heading-color;
+                        font-weight: 700;
+                        white-space: nowrap;
+
+                        @include media-breakpoint-down(sm) {
+                            margin: 0 0.25rem 0 0.5rem;
+                        }
+                    }
+
+                    a, button {
+                        width: 100%;
+                        text-align: left;
+                        display: block;
+                        padding: 0.25rem 0;
+                        margin: 0 0 0 1rem;
+                        white-space: nowrap;
+
+                        &:hover {
+                            color: $side-navigation-hover-color;
+                        }
+
+                        &.active {
+                            font-weight: bold;
+                        }
+
+                        @include media-breakpoint-down(sm) {
+                            margin: 0;
+                            padding: 0 0.5rem 0;
+                            border-right: 0.0625rem solid black;
+                            width: auto;
+                        }
+                    }
+
+                    button {
+                        border: none;
+                        background-color: $transparent;
+                        border-radius: 0;
+                        color: $side-navigation-link-color;
+
+                        &:focus {
+                            color: $side-navigation-hover-color;
+                        }
+                    }
+
+                    &.no-border {
+                        a, button {
+                            border: none;
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+}

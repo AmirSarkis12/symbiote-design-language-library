@@ -1,0 +1,39 @@
+.checkbox {
+    display: inline-flex;
+	flex-wrap: wrap;
+    justify-content: left;
+
+	&-label {
+		margin: 1.2rem 0rem;
+		cursor: pointer;
+	}
+
+	&-group {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 1.25rem;
+        height: 1.25rem;
+		background-color: transparent;
+		border: 0.125rem solid $checkbox-border-color;
+		border-radius: 0.25rem;
+		margin: 0rem 0.5rem;
+	}
+
+	&-input:checked + &-checked {
+		opacity: 1;
+	}
+
+	&-checked {
+		content: "";
+        width: 0.25rem;
+        height: 0.625rem;
+		margin-top: -0.125rem;
+        border-right: 0.125rem solid $checkbox-check-color;
+        border-bottom: 0.125rem solid $checkbox-check-color;
+		opacity: 0;
+		transform: rotate(30deg);
+		@include transition();
+	}
+}

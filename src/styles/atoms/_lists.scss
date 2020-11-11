@@ -1,0 +1,102 @@
+ol {
+    &.styled-list {
+        counter-reset:counter;
+        margin: 0.6rem 0;
+
+        li {
+            position: relative;
+            padding-left: 2.4rem;
+            list-style: none;
+            @include transition();
+
+            &:before {
+                content: counter(counter);
+                counter-increment: counter;
+                position: absolute;
+                top: -0.2rem;
+                left: 0;
+                width: 1.8rem;
+                height: 1.8rem;
+                line-height: 1.8em;
+                padding: 0;
+                color: $list-point-foreground-color;
+                background-color: $list-point-background-color;
+                text-align: center;
+                border-radius: 100%;
+                z-index: 16;
+                @include transition();
+            }
+
+            &:hover:before, &:focus:before {
+                @include darken-on-hover-focus($list-point-background-color);
+            }
+
+            &:after {
+                position: absolute;
+                top: 2.3rem;
+                left: 0.85em;
+                width: 0.125rem;
+                height: calc(100% - 1.8em);
+                content: '';
+                background-color: $list-association-color;
+                z-index: 15;
+            }
+
+            &:last-child {
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+ul {
+    &.styled-list {
+        li {
+            position: relative;
+            padding-left: 1.4rem;
+            list-style: none;
+            @include transition();
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0.3125rem;
+                left: 0;
+                width: 0.8rem;
+                height: 0.8rem;
+                padding: 0;
+                background-color: $list-point-background-color;
+                text-align: center;
+                border-radius: 100%;
+                z-index: 16;
+                @include transition();
+            }
+
+            &:hover:before, &:focus:before {
+                @include darken-on-hover-focus($list-point-background-color);
+            }
+
+            :after {
+                position: absolute;
+                top: 1.8rem;
+                left: 0.4em;
+                width: 0.125rem;
+                height: calc(100% - 1rem);
+                content: '';
+                background-color: $list-association-color;
+                z-index: 15;
+            }
+
+            &:last-child {
+                p, b {
+                    &:after {
+                        display: none;
+                    }
+                }
+
+            }
+        }
+    }
+}

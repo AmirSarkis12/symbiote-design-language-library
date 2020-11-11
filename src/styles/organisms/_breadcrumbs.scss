@@ -1,0 +1,48 @@
+.breadcrumbs {
+    height: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    position: sticky;
+    top: 4rem;
+    z-index: 17;
+    background-color: $breadcumbs-background-color;
+
+    @include media-breakpoint-down(sm) {
+        display: grid;
+    }
+
+    .breadcrumb {
+        display: inline-block;
+        position: relative;
+        height: 1rem;
+        margin: 0 0.5rem 0 0.5rem;
+        color: $breadcumbs-foreground-color;
+        white-space: nowrap;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: flex-start;
+
+        &:first-child {
+            margin: 0 0.5rem 0 0rem;
+        }
+
+        &:last-child {
+            margin: 0 0 0 0.5rem;
+        }
+
+        i {
+            margin: 0 0.25rem 0 0;
+        }
+    }
+
+    .breadcrumb__spacer {
+        display: inline-block;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+

@@ -1,0 +1,307 @@
+// Media query breakpoints
+    // Propigates up breakpoints e.g.: media-breakpoint-up(sm) -> sm breakpoint (inclusive) and up
+    @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+        $min: breakpoint-min($name, $breakpoints);
+        @if $min {
+            @media (min-width: $min) {
+                @content;
+            }
+        } @else {
+            @content;
+        }
+    }
+
+    // Propigates down breakpoints e.g.: media-breakpoint-down(sm) -> sm breakpoint (inclusive) and down
+    @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+        $max: breakpoint-max($name, $breakpoints);
+        @if $max {
+            @media (max-width: $max) {
+                @content;
+            }
+        } @else {
+            @content;
+        }
+    }
+
+    // Non-propigating breakpoint e.g.: media-breakpoint-only(sm) -> only within the bounds of the sm breakpoint
+    @mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+        $min:  breakpoint-min($name, $breakpoints);
+        $next: breakpoint-next($name, $breakpoints);
+        $max:  breakpoint-max($next);
+
+        @if $min != null and $max != null {
+            @media (min-width: $min) and (max-width: $max) {
+                @content;
+            }
+        } @else if $max == null {
+            @include media-breakpoint-up($name, $breakpoints) {
+                @content;
+            }
+        } @else if $min == null {
+            @include media-breakpoint-down($next, $breakpoints) {
+                @content;
+            }
+        }
+    }
+
+    // Propigating between the bounds of to breakpoints e.g.: media-breakpoint-between(sm,md) -> only within the bounds of the sm and md breakpoints
+    @mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+        $min: breakpoint-min($lower, $breakpoints);
+        $max: breakpoint-max($upper, $breakpoints);
+
+        @if $min != null and $max != null {
+            @media (min-width: $min) and (max-width: $max) {
+                @content;
+            }
+        } @else if $max == null {
+            @include media-breakpoint-up($lower, $breakpoints) {
+                @content;
+            }
+        } @else if $min == null {
+            @include media-breakpoint-down($upper, $breakpoints) {
+                @content;
+            }
+        }
+    }
+
+// Clearfix - for clearing floats
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+// Hides an element from the screen but not a screen reader
+@mixin sr-only() {
+	position: absolute;
+	width: 0.0625rem;
+	height: 0.0625rem;
+	padding: 0;
+	margin: -0.0625rem;
+	overflow: hidden;
+	clip: rect( 0, 0, 0, 0 );
+	border: 0;
+}
+
+// Cross browser compatible opacity style
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  // IE8 filter
+  $opacity-ie: ($opacity * 100);
+  filter: #{alpha(opacity=$opacity-ie)};
+}
+
+// Provides a smooth transition effect for when elements have a styling augmentation
+@mixin transition() {
+    transition: all 0.2s ease-in-out;
+}
+
+// Darkens the background color of any element when hovered
+@mixin darken-on-hover-focus($color) {
+    background-color: darken($color, 10%);
+}
+
+// Lightens the background color of any element when hovered
+@mixin lighten-on-hover-focus($color) {
+    background-color: Lightens($color, 10%);
+}
+
+// Animated underline
+@mixin animated-underline($color) {
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: -0.25rem;
+        left: 0; right: 0;
+        height: 0.125rem;
+        background-color: $color
+    }
+
+    &:before {
+        opacity: 0;
+        transform: translateY(0.25rem);
+        transition: transform 0s cubic-bezier(0.175, 0.885, 0.320, 1.275), opacity 0s;
+    }
+
+    &:after {
+        opacity: 0;
+        transform: translateY(0.25rem);
+
+    }
+
+    &:hover {
+        &:before,
+        &:after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        &:before {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.320, 1.275), opacity 0.3s;
+        }
+        &:after {
+            transition: transform 0s 0.3s cubic-bezier(0.175, 0.885, 0.320, 1.275), opacity 0s 0.3s;
+        }
+    }
+}
+
+
+// General use drop shadow
+@mixin general-shadow() {
+    box-shadow: 0 0.625rem 1.785rem 0.35rem rgba(0,0,0,0.3);
+}
+
+// Card specific shadows
+    @mixin card-shadow() {
+        box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2);
+    }
+
+    @mixin card-shadow-image() {
+        box-shadow: 0 0.3rem 1.875rem 0.625rem rgba($black, 0.3);
+    }
+
+    @mixin full-image-card-shadow() {
+        box-shadow: 0 0.3rem 0.625rem rgba(0, 0, 0, 0.2), 0 0.9rem 0.75rem rgba(0, 0, 0, 0.2), inset 0 -317px 3.125rem -93px rgba(0, 0, 0, 0.33);
+    }
+
+
+// Grid specific mixins below
+
+    // Used to evaluate Sass maps like our grid breakpoints.
+    @mixin _assert-ascending($map, $map-name) {
+        $prev-key: null;
+        $prev-num: null;
+        @each $key, $num in $map {
+            @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
+                // Do nothing
+            } @else if not comparable($prev-num, $num) {
+                @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+            } @else if $prev-num >= $num {
+                @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+            }
+            $prev-key: $key;
+            $prev-num: $num;
+        }
+    }
+
+    // Used to ensure the min-width of the lowest breakpoint starts at 0.
+    @mixin _assert-starts-at-zero($map, $map-name: "$grid-breakpoints") {
+        @if length($map) > 0 {
+            $values: map-values($map);
+            $first-value: nth($values, 1);
+            @if $first-value != 0 {
+                @warn "First breakpoint in #{$map-name} must start at 0, but starts at #{$first-value}.";
+            }
+        }
+    }
+
+    // Container mixins
+    @mixin make-container($gutter: $grid-gutter-width) {
+        --bs-gutter-x: #{$gutter};
+
+        width: 100%;
+        padding-right: calc(var(--bs-gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+        padding-left: calc(var(--bs-gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+
+    // Generate semantic grid columns with these mixins.
+    @mixin make-row($gutter: $grid-gutter-width) {
+        --bs-gutter-x: #{$gutter};
+        --bs-gutter-y: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: calc(var(--bs-gutter-y) * -1); // stylelint-disable-line function-disallowed-list
+        margin-right: calc(var(--bs-gutter-x) / -2); // stylelint-disable-line function-disallowed-list
+        margin-left: calc(var(--bs-gutter-x) / -2); // stylelint-disable-line function-disallowed-list
+    }
+
+    @mixin make-col-ready($gutter: $grid-gutter-width) {
+        // Add box sizing if only the grid is loaded
+        box-sizing: if(variable-exists(include-column-box-sizing), border-box, null);
+        // Prevent columns from becoming too narrow when at smaller grid tiers by
+        // always setting `width: 100%;`. This works because we set the width
+        // later on to override this initial width.
+        flex-shrink: 0;
+        width: 100%;
+        max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
+        padding-right: calc(var(--bs-gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+        padding-left: calc(var(--bs-gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+        margin-top: var(--bs-gutter-y);
+    }
+
+    @mixin make-col($size, $columns: 12) {
+        flex: 0 0 auto;
+        width: percentage($size / $columns);
+    }
+
+    @mixin make-col-auto() {
+        flex: 0 0 auto;
+        width: auto;
+    }
+
+    @mixin make-col-offset($size, $columns: 12) {
+        $num: $size / $columns;
+        margin-left: if($num == 0, 0, percentage($num));
+    }
+
+    // Row columns
+    @mixin row-cols($count) {
+        > * {
+            flex: 0 0 auto;
+            width: 100% / $count;
+        }
+    }
+
+    // Used to generate the correct number of grid classes
+    @mixin make-grid-columns($columns: 12, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+        @each $breakpoint in map-keys($breakpoints) {
+            $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+            @include media-breakpoint-up($breakpoint, $breakpoints) {
+                // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+                .col#{$infix} {
+                    flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+                }
+
+                .row-cols#{$infix}-auto > * {
+                    @include make-col-auto();
+                }
+
+                @for $i from 1 through 6 {
+                    .row-cols#{$infix}-#{$i} {
+                        @include row-cols($i);
+                    }
+                }
+
+                .col#{$infix}-auto {
+                    @include make-col-auto();
+                }
+
+                @if $columns > 0 {
+                    @for $i from 1 through $columns {
+                        .col#{$infix}-#{$i} {
+                            @include make-col($i, $columns);
+                        }
+                    }
+
+                    // `$columns - 1` because offsetting by the width of an entire row isn't possible
+                    @for $i from 0 through ($columns - 1) {
+                        @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-0
+                            .offset#{$infix}-#{$i} {
+                                @include make-col-offset($i, $columns);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
